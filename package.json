@@ -4,8 +4,12 @@
   "description": "A movie library",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf ./bundle.js",
-    "start": "test"
+    "clean": "rimraf ./dist/bundle.js",
+    "build": "webpack",
+    "serve": "node _server/app.js",
+    "start": "npm run clean && npm run build && npm run serve",
+    "dev-server": "nodemon _server/app.js",
+    "dev-client": "webpack --watch"
   },
   "author": "Sergio Martin",
   "license": "MIT",
