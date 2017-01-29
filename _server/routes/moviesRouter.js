@@ -1,6 +1,4 @@
 const router = require('express').Router()
-
-const db = require('../db/db')
 const Movies = require('../db/models/movies')
 
 router.get('/test', (req, res) => {
@@ -35,7 +33,16 @@ router.put('/:id', (req, res) => {
 // --- POST METHODS
 // CREATE
 router.post('/', (req, res) => {
-  res.status(200).json({ test: 'ok!' })
+  let newMovie = req.body
+  let movie = new Movies(newMovie)
+  Movies.save((err) => {
+    if (err) {
+      console.log('DB Error', err)
+      res.status(500).json({ error: true, message: 'DB Error', data: null })
+    } else {
+      res.status(200).json({ error: false, data: movie })
+    }
+  })
 })
 
 // --- DELETE METHODS

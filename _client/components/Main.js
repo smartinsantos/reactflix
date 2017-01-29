@@ -5,6 +5,7 @@ import { Link } from 'react-router'
 import Movies from '../models/movies.model.js'
 // Components
 import Nav from './Nav'
+import AddMovie from './AddMovie'
 
 const { arrayOf, shape, string } = React.PropTypes
 const Main = React.createClass({
@@ -16,8 +17,8 @@ const Main = React.createClass({
   },
   getInitialState () {
     return {
-      searchTerm: '',
-      movies: []
+      movies: [],
+      searchTerm: ''
     }
   },
   componentDidMount () {
@@ -35,10 +36,11 @@ const Main = React.createClass({
     return (
       <div className='main'>
         <Nav
-          showSearch={true}
+          showSearch
           searchTerm={this.state.searchTerm}
           handleSearchTermChange={this.handleSearchTermChange} 
         />
+        <AddMovie />
         {this.state.movies}
       </div>
     )
