@@ -1,5 +1,6 @@
 import React from 'react'
 import toastr from 'toastr'
+import _ from 'underscore'
 // Models
 import Movies from '../models/movies.model.js'
 // Components
@@ -21,29 +22,29 @@ const EditMovie = React.createClass({
     })
   },
   handleTitle (event) {
-    this.setState({ 
-      movie: { title: event.target.value }
-    })
+    let editedMovie = _.extend({}, this.state.movie)
+    editedMovie.title = event.target.value
+    this.setState({ movie: editedMovie })
   },
   handleYear (event) {
-    this.setState({ 
-      movie: { year: event.target.value }
-    })
+    let editedMovie = _.extend({}, this.state.movie)
+    editedMovie.year = event.target.value
+    this.setState({ movie: editedMovie })
   },
   handleGenre (event) {
-    this.setState({ 
-      movie: { genre: event.target.value }
-    })
+    let editedMovie = _.extend({}, this.state.movie)
+    editedMovie.genre = event.target.value
+    this.setState({ movie: editedMovie })
   },
   handleActors (event) {
-    this.setState({ 
-      movie: { actors: event.target.value }
-    })
+    let editedMovie = _.extend({}, this.state.movie)
+    editedMovie.actors = event.target.value
+    this.setState({ movie: editedMovie })
   },
   handleRating (value) {
-    this.setState({ 
-      movie: { rating: event.target.value }
-    })
+    let editedMovie = _.extend({}, this.state.movie)
+    editedMovie.rating = value
+    this.setState({ movie: editedMovie })
   },
   handlePoster (event) {
     // this.setState({ year: event.target.value })
@@ -54,7 +55,7 @@ const EditMovie = React.createClass({
       if (res.error) {
         toastr.error('Error Ocurred') 
       } else {
-        toastr.success(`Edited ' ${movie.title} '`) 
+        toastr.success(`Edited ' ${res.data.title} '`) 
       }
     })
   },
