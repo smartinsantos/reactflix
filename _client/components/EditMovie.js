@@ -59,6 +59,16 @@ const EditMovie = React.createClass({
       }
     })
   },
+  handleRemove () {
+    Movies.remove(this.state.movie._id)
+    .then((res) => {
+      if (res.error) {
+        toastr.error('Error Ocurred') 
+      } else {
+        toastr.success(`Removed ' ${res.data.title} '`) 
+      }
+    })
+  },
   render () {
     return (
       <div>
@@ -92,13 +102,19 @@ const EditMovie = React.createClass({
               <input type='file' id='inputFile' onChange={this.handlePoster} />
               <p className='help-block'>File Name</p>
             </div>
-            <div className='text-center'>
+            <div className='text-center row'>
               <button
                 disabled={!this.state.movie.title}
                 onClick={this.handleFormSubmit}
                 type='submit'
-                className='btn btn-default'>
+                className='btn btn-default btn-inline'>
                 Save Changes
+              </button>
+              <button
+                onClick={this.handleRemove}
+                type='submit'
+                className='btn btn-danger btn-inline'>
+                Delete
               </button>
             </div>
           </div>

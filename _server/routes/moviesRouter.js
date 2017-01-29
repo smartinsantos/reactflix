@@ -78,8 +78,26 @@ router.post('/', (req, res) => {
 
 // --- DELETE METHODS
 // DELETE
-router.delete('/', (req, res) => {
-  res.status(200).json({ test: 'ok!' })
+router.delete('/:id', (req, res) => {
+  Movies.findOne({_id: req.params.id})
+  .exec()
+  .then((movie) => {
+    if (!movie) {
+      res.status(400).json({ error: true, message: 'Bad Request', data: null })
+    } else {
+      movie.remove((err) => {
+        if (err) {
+          throw err
+        } else {
+          res.status(200).json({ error: false, data: movie })
+        }
+      })
+    }
+  })
+  .catch((err) => {
+    console.log('DB Error', err)
+    res.status(500).json({ error: true, message: 'DB Error', data: null })
+  })
 })
 
 module.exports = router

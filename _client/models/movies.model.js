@@ -53,7 +53,7 @@ function edit (movie) {
 }
 
 function remove (id) {
-  return axios.put(`/api/movies/${id}`)
+  return axios.delete(`/api/movies/${id}`)
   .then((res) => {
     return res.data
   })

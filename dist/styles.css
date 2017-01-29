@@ -41,3 +41,7 @@ html {
   font-weight: normal;
   text-decoration: none;
 }
+
+.btn-inline {
+  margin: 0px 5px 0px 5px;
+}
