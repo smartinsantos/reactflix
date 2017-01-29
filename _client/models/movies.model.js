@@ -13,7 +13,7 @@ function MoviesModel () {
 
   function getOne () {
     console.log('getOne')
-    return
+    return 'hello'
   }
 
   function getAll () {
