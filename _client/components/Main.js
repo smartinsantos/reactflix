@@ -26,24 +26,27 @@ const Main = React.createClass({
   },
   render () {
     return (
-      <div className='search'>
+      <div className='main'>
         <Nav
           showSearch
           searchTerm={this.state.searchTerm}
           handleSearchTermChange={this.handleSearchTermChange} 
         />
-        <div className='text-center'>
-          <Link to='/add' className='btn btn-default'>Add Movie</Link>
-        </div>
-        <div className='row'>
-          {this.state.movies
-            .filter((movie) => {
-              return `${movie.title}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
-            })
-            .map((movie, index) => {
-              return <ShowCard movie={movie} key={movie._id} />
-            })
-          }
+        <div className='container'>
+          <div className='text-center'>
+            <Link to='/add' className='btn btn-default'>Add Movie</Link>
+          </div>
+          <hr />
+          <div className='row'>
+            {this.state.movies
+              .filter((movie) => {
+                return `${movie.title}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
+              })
+              .map((movie, index) => {
+                return <ShowCard movie={movie} key={movie._id} />
+              })
+            }
+          </div>
         </div>
       </div>
     )

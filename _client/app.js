@@ -13,6 +13,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import Landing from './components/Landing'
 import Main from './components/Main'
 import AddMovie from './components/AddMovie'
+import Details from './components/Details'
 
 const App = React.createClass({
   render () {
@@ -22,6 +23,7 @@ const App = React.createClass({
           <Route path='/' component={Landing} />
           <Route path='/main' component={Main} />
           <Route path='/add' component={AddMovie} />
+          <Route path='/details/:id' component={Details} />
         </Router>
       </div>
     )
