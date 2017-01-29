@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import toastr from 'toastr'
 toastr.options = { 'positionClass': 'toast-top-center' }
 import _ from 'underscore'
@@ -11,7 +12,9 @@ import ReactStars from 'react-stars'
 const EditMovie = React.createClass({
   getInitialState () {
     return {
-      movie: {}
+      movie: {},
+      hideSure: 'hide',
+      hiddenDelete: 'none'
     }
   },
   componentDidMount () {
@@ -56,6 +59,7 @@ const EditMovie = React.createClass({
       if (res.error) {
         toastr.error('Error Ocurred') 
       } else {
+        browserHistory.push('/main')
         toastr.success(`Edited ' ${res.data.title} '`) 
       }
     })
@@ -66,9 +70,14 @@ const EditMovie = React.createClass({
       if (res.error) {
         toastr.error('Error Ocurred') 
       } else {
+        browserHistory.push('/main')
         toastr.success(`Removed ' ${res.data.title} '`) 
       }
     })
+  },
+  toggleDelete () {
+    this.setState({hideDelete: 'hide'})
+    this.setState({hideSure: 'none'})
   },
   render () {
     return (
@@ -112,10 +121,16 @@ const EditMovie = React.createClass({
                 Save Changes
               </button>
               <button
+                onClick={this.toggleDelete}
+                type='submit'
+                className={`btn btn-danger btn-inline ${this.state.hideDelete}`}>
+                Delete
+              </button>
+              <button
                 onClick={this.handleRemove}
                 type='submit'
-                className='btn btn-danger btn-inline'>
-                Delete
+                className={`btn btn-danger btn-inline ${this.state.hideSure}`}>
+                Sure?
               </button>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import toastr from 'toastr'
 toastr.options = { 'positionClass': 'toast-top-center' }
 // Models
@@ -50,6 +51,7 @@ const AddMovie = React.createClass({
       if (res.error) {
         toastr.error('Error Ocurred') 
       } else {
+        browserHistory.push('/main')
         toastr.success(`Added ' ${res.data.title} '`) 
       }
     })
