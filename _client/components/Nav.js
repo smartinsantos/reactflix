@@ -23,17 +23,17 @@ const Nav = React.createClass({
     }
     return (
       <nav className='navbar navbar-default'>
-        <div className="container-fluid">
-          <div className="navbar-header">
+        <div className='container-fluid'>
+          <div className='navbar-header'>
             <Link to='/'>
-              <span className="navbar-brand">
+              <span className='navbar-brand'>
                 ReactFlix
               </span>
             </Link>
           </div>
           <div>
-            <form className="navbar-form navbar-right" role="search">
-              <div className="form-group">
+            <form className='navbar-form navbar-right' role='search'>
+              <div className='form-group'>
                 {utilSpace}
               </div>
             </form>

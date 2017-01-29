@@ -15,7 +15,7 @@ let advancedFilter = (collection, filterValue) => {
     return stringProp.indexOf(word) >= 0
   }
   let filtered = []
-  // iterate all movies passed in 
+  // iterate all movies passed in
   _.each(collection, (movie) => {
     // iterate all the words passed in to the filter
     let wordMatch = []
@@ -83,7 +83,6 @@ const Main = React.createClass({
           <hr />
           <div className='row'>
             {
-              
               _.map(advancedFilter(this.state.movies, this.state.searchTerm), (movie) => {
                 return <ShowCard movie={movie} key={movie._id} />
               })

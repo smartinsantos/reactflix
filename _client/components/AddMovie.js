@@ -39,20 +39,19 @@ const AddMovie = React.createClass({
     // this.setState({ year: event.target.value })
   },
   handleFormSubmit () {
-    let movie = {} 
+    let movie = {}
     movie.title = this.state.title
     movie.year = this.state.year
     movie.genre = this.state.genre
     movie.actors = this.state.actors
     movie.rating = this.state.rating
-    // movie.poster_url = this.state.fileUrl
     Movies.create(movie)
     .then((res) => {
       if (res.error) {
-        toastr.error('Error Ocurred') 
+        toastr.error('Error Ocurred')
       } else {
         browserHistory.push('/main')
-        toastr.success(`Added ' ${res.data.title} '`) 
+        toastr.success(`Added ' ${res.data.title} '`)
       }
     })
   },
@@ -84,11 +83,14 @@ const AddMovie = React.createClass({
                 half={false}
                 color2={'#ffd700'} />
             </div>
-            <div className='form-group'>
-              <label htmlFor='inputFile'>Poster</label>
-              <input type='file' id='inputFile' onChange={this.handlePoster} />
-              <p className='help-block'>File Name</p>
-            </div>
+            {
+            // future implementation
+            // <div className='form-group'>
+            //   <label htmlFor='inputFile'>Poster</label>
+            //   <input type='file' id='inputFile' onChange={this.handlePoster} />
+            //   <p className='help-block'>File Name</p>
+            // </div>
+            }
             <div className='text-center'>
               <button
                 disabled={!this.state.title}

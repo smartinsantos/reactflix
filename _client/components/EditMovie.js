@@ -57,10 +57,10 @@ const EditMovie = React.createClass({
     Movies.edit(this.state.movie)
     .then((res) => {
       if (res.error) {
-        toastr.error('Error Ocurred') 
+        toastr.error('Error Ocurred')
       } else {
         browserHistory.push('/main')
-        toastr.success(`Edited ' ${res.data.title} '`) 
+        toastr.success(`Edited ' ${res.data.title} '`)
       }
     })
   },
@@ -68,10 +68,10 @@ const EditMovie = React.createClass({
     Movies.remove(this.state.movie._id)
     .then((res) => {
       if (res.error) {
-        toastr.error('Error Ocurred') 
+        toastr.error('Error Ocurred')
       } else {
         browserHistory.push('/main')
-        toastr.success(`Removed ' ${res.data.title} '`) 
+        toastr.success(`Removed ' ${res.data.title} '`)
       }
     })
   },
@@ -107,11 +107,14 @@ const EditMovie = React.createClass({
                 half={false}
                 color2={'#ffd700'} />
             </div>
-            <div className='form-group'>
-              <label htmlFor='inputFile'>Poster</label>
-              <input type='file' id='inputFile' onChange={this.handlePoster} />
-              <p className='help-block'>File Name</p>
-            </div>
+            {
+            // future implementation
+            // <div className='form-group'>
+            //   <label htmlFor='inputFile'>Poster</label>
+            //   <input type='file' id='inputFile' onChange={this.handlePoster} />
+            //   <p className='help-block'>File Name</p>
+            // </div>
+            }
             <div className='text-center row'>
               <button
                 disabled={!this.state.movie.title}

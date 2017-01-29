@@ -32,7 +32,7 @@ const ShowCard = React.createClass({
                   half={false}
                   value={this.props.movie.rating}
                   color2={'#ffd700'} />
-                <p>Year: {this.props.movie.year}</p>                  
+                <p>Year: {this.props.movie.year}</p>
                 <p>Genre: {this.props.movie.genre}</p>
                 <p>Actors: {this.props.movie.actors}</p>
               </div>

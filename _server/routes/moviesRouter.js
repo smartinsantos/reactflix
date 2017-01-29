@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
 // --- PUT METHODS
 // EDIT
 router.put('/:id', (req, res) => {
-  let editedMovie = req.body  
+  let editedMovie = req.body
   Movies.findOne({_id: req.params.id})
   .exec()
   .then((movie) => {
