@@ -1,5 +1,6 @@
 import React from 'react'
 import toastr from 'toastr'
+toastr.options = { 'positionClass': 'toast-top-center' }
 // Models
 import Movies from '../models/movies.model.js'
 // Components
