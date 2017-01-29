@@ -25,7 +25,6 @@ app.use(cookieParser())
 app.use('/api', router)
 
 const distFolder = path.resolve(__dirname, '../dist/')
-console.log(distFolder)
 app.use('/dist', express.static(distFolder))
 
 app.get('*', (req, res) => {

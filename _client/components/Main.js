@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+//Models
+import Movies from '../models/movies.model.js'
 // Components
 import Nav from './Nav'
 
@@ -14,8 +16,17 @@ const Main = React.createClass({
   },
   getInitialState () {
     return {
-      searchTerm: ''
+      searchTerm: '',
+      movies: []
     }
+  },
+  componentDidMount () {
+    Movies.getAll()
+    .then((res) => {
+      if (!res.error) {
+        this.setState({ movies: res.data })
+      }
+    })
   },
   handleSearchTermChange (event) {
     this.setState({ searchTerm: event.target.value })
@@ -28,6 +39,7 @@ const Main = React.createClass({
           searchTerm={this.state.searchTerm}
           handleSearchTermChange={this.handleSearchTermChange} 
         />
+        {this.state.movies}
       </div>
     )
   }

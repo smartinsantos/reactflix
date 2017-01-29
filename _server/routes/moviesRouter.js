@@ -15,7 +15,15 @@ router.get('/:id', (req, res) => {
 
 // GET ALL
 router.get('/', (req, res) => {
-  res.status(200).json({ test: 'ok!' })
+  Movies.find({})
+  .exec()
+  .then((movies) => {
+    res.status(200).json({ error: false, data: movies })
+  })
+  .catch((err) => {
+    console.log('DB Error', err)
+    res.status(500).json({ error: true, message: 'DB Error', data: null })
+  })
 })
 
 // --- PUT METHODS
