@@ -40,7 +40,7 @@ const Main = React.createClass({
           <div className='row'>
             {this.state.movies
               .filter((movie) => {
-                return `${movie.title}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
+                return `${movie.title} ${movie.year} ${movie.genre} ${movie.actors}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
               })
               .map((movie, index) => {
                 return <ShowCard movie={movie} key={movie._id} />

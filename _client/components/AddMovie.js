@@ -26,7 +26,7 @@ const AddMovie = React.createClass({
   handleGenre (event) {
     this.setState({ genre: event.target.value })
   },
-  HandleActors (event) {
+  handleActors (event) {
     this.setState({ actors: event.target.value })
   },
   handleRating (event) {
@@ -38,9 +38,9 @@ const AddMovie = React.createClass({
   handleFormSubmit () {
     let movie = {} 
     movie.title = this.state.title
-    movie.year = this.state.year  
+    movie.year = this.state.year
     movie.genre = this.state.genre
-    movie.actors = this.state.actors 
+    movie.actors = this.state.actors
     movie.rating = this.state.rating
     movie.poster = { url: this.state.fileUrl }
 

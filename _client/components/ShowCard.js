@@ -10,9 +10,7 @@ const ShowCard = React.createClass({
       genre: string,
       actors: string,
       rating: number,
-      poster: shape({
-        url: string
-      })
+      poster_url: string
     })
   },
   render () {
@@ -20,7 +18,7 @@ const ShowCard = React.createClass({
       <Link to={`/details/${this.props.movie._id}`}>
         <div className='col-sm-4 col-md-3'>
           <div className='thumbnail'>
-            <img src='/dist/img/default_poster.jpg' alt='...' />
+            <img src={this.props.movie.poster_url} alt='...' />
             <div className='caption'>
               <h3>{this.props.movie.title} <small>({(this.props.movie.year)})</small></h3>
               <div>
@@ -31,7 +29,7 @@ const ShowCard = React.createClass({
             </div>
           </div>
         </div>
-      </Link>    
+      </Link>
     )
   }
 })
