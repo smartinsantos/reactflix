@@ -6,50 +6,55 @@ import Movies from '../models/movies.model.js'
 import Nav from './Nav'
 import ReactStars from 'react-stars'
 
-const AddMovie = React.createClass({
+const EditMovie = React.createClass({
   getInitialState () {
     return {
-      title: '',
-      year: '',
-      genre: '',
-      actors: '',
-      rating: '',
-      fileUrl: '',
-      suggestion: []
+      movie: {}
     }
   },
+  componentDidMount () {
+    Movies.getOne(this.props.params.id)
+    .then((res) => {
+      if (!res.error) {
+        this.setState({ movie: res.data })
+      }
+    })
+  },
   handleTitle (event) {
-    this.setState({ title: event.target.value })
+    this.setState({ 
+      movie: { title: event.target.value }
+    })
   },
   handleYear (event) {
-    this.setState({ year: event.target.value })
+    this.setState({ 
+      movie: { year: event.target.value }
+    })
   },
   handleGenre (event) {
-    this.setState({ genre: event.target.value })
+    this.setState({ 
+      movie: { genre: event.target.value }
+    })
   },
   handleActors (event) {
-    this.setState({ actors: event.target.value })
+    this.setState({ 
+      movie: { actors: event.target.value }
+    })
   },
   handleRating (value) {
-    this.setState({ rating: value })
+    this.setState({ 
+      movie: { rating: event.target.value }
+    })
   },
   handlePoster (event) {
     // this.setState({ year: event.target.value })
   },
   handleFormSubmit () {
-    let movie = {} 
-    movie.title = this.state.title
-    movie.year = this.state.year
-    movie.genre = this.state.genre
-    movie.actors = this.state.actors
-    movie.rating = this.state.rating
-    // movie.poster_url = this.state.fileUrl
-    Movies.create(movie)
+    Movies.edit(this.state.movie)
     .then((res) => {
       if (res.error) {
         toastr.error('Error Ocurred') 
       } else {
-        toastr.success(`Added ' ${res.data.title} '`) 
+        toastr.success(`Edited ' ${movie.title} '`) 
       }
     })
   },
@@ -60,22 +65,22 @@ const AddMovie = React.createClass({
         <div className='container addmovie'>
           <div className='form-horizontal'>
             <div className='form-group'>
-              <input type='text' className='form-control' id='title' placeholder='Title' onChange={this.handleTitle} />
+              <input type='text' className='form-control' id='title' placeholder='Title' value={this.state.movie.title} onChange={this.handleTitle} />
             </div>
             <div className='form-group'>
-              <input type='text' className='form-control' id='year' placeholder='Year' onChange={this.handleYear} />
+              <input type='text' className='form-control' id='year' placeholder='Year' value={this.state.movie.year} onChange={this.handleYear} />
             </div>
             <div className='form-group'>
-              <input type='text' className='form-control' id='genre' placeholder='Genre' onChange={this.handleGenre} />
+              <input type='text' className='form-control' id='genre' placeholder='Genre' value={this.state.movie.genre} onChange={this.handleGenre} />
             </div>
             <div className='form-group'>
-              <input type='text' className='form-control' id='rating' placeholder='Actors' onChange={this.handleActors} />
+              <input type='text' className='form-control' id='rating' placeholder='Actors' value={this.state.movie.actors} onChange={this.handleActors} />
             </div>
             <div className='form-group'>
               <label>Rating</label>
               <ReactStars
                 onChange={this.handleRating}
-                value={this.state.rating}
+                value={this.state.movie.rating}
                 count={5}
                 size={24}
                 half={false}
@@ -88,11 +93,11 @@ const AddMovie = React.createClass({
             </div>
             <div className='text-center'>
               <button
-                disabled={!this.state.title}
+                disabled={!this.state.movie.title}
                 onClick={this.handleFormSubmit}
                 type='submit'
                 className='btn btn-default'>
-                Save
+                Save Changes
               </button>
             </div>
           </div>
@@ -102,4 +107,4 @@ const AddMovie = React.createClass({
   }
 })
 
-export default AddMovie
+export default EditMovie

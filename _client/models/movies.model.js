@@ -8,9 +8,15 @@ const MoviesModel = {
   remove
 }
 
-function getOne () {
-  console.log('getOne')
-  return 'hello'
+function getOne (id) {
+  return axios.get(`/api/movies/${id}`)
+  .then((res) => {
+    return res.data
+  })
+  .catch((err) => {
+    console.log('Users Api Err: ', err)
+    return err
+  })
 }
 
 function getAll () {
@@ -35,14 +41,26 @@ function create (movie) {
   })
 }
 
-function edit () {
-  return
+function edit (movie) {
+  return axios.put(`/api/movies/${movie._id}`, movie)
+  .then((res) => {
+    return res.data
+  })
+  .catch((err) => {
+    console.log('Users Api Err: ', err)
+    return err
+  })
 }
 
-function remove () {
-  return
+function remove (id) {
+  return axios.put(`/api/movies/${id}`)
+  .then((res) => {
+    return res.data
+  })
+  .catch((err) => {
+    console.log('Users Api Err: ', err)
+    return err
+  })
 }
-
-
 
 export default MoviesModel
