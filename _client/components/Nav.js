@@ -19,7 +19,7 @@ const Nav = React.createClass({
                     onChange={this.props.handleSearchTermChange}
                   />
     } else {
-      utilSpace = <button><Link to='/search'>Back</Link></button>
+      utilSpace = <Link to='/main' className='btn btn-default btn-sm'>Back</Link>
     }
     return (
       <nav className='navbar navbar-default'>

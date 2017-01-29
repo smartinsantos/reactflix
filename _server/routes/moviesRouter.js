@@ -35,7 +35,7 @@ router.put('/:id', (req, res) => {
 router.post('/', (req, res) => {
   let newMovie = req.body
   let movie = new Movies(newMovie)
-  Movies.save((err) => {
+  movie.save((err) => {
     if (err) {
       console.log('DB Error', err)
       res.status(500).json({ error: true, message: 'DB Error', data: null })

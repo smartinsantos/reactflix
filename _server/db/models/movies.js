@@ -2,13 +2,13 @@ const db = require('mongoose')
 const Schema = db.Schema
 
 const MovieSchema = new Schema({
-  genre: { type: String },
-  actors: [{ type: String }],
+  genre: { type: String, required: true },
+  actors: { type: String },
   title: { type: String },
-  year: { type: Number },
+  year: { type: String },
   rating: { type: Number },
   poster: {
-    url: { type: String }
+    url: { type: String, default: 'dist/img/default_poster.jpg' }
   }
 },
 {

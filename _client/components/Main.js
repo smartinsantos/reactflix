@@ -1,20 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
-
-//Models
+// Models
 import Movies from '../models/movies.model.js'
 // Components
 import Nav from './Nav'
-import AddMovie from './AddMovie'
 
-const { arrayOf, shape, string } = React.PropTypes
 const Main = React.createClass({
-  propTypes: {
-    shows: arrayOf(shape({
-      title: string,
-      description: string
-    }))
-  },
   getInitialState () {
     return {
       movies: [],
@@ -40,8 +31,10 @@ const Main = React.createClass({
           searchTerm={this.state.searchTerm}
           handleSearchTermChange={this.handleSearchTermChange} 
         />
-        <AddMovie />
-        {this.state.movies}
+        <div className='text-center'>
+          <Link to='/add' className='btn btn-default'>Add Movie</Link>
+        </div>
+        <pre><code>{JSON.stringify(this.state.movies)}</code></pre>
       </div>
     )
   }

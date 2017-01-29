@@ -24,8 +24,15 @@ function getAll () {
   })
 }
 
-function create () {
-  return
+function create (movie) {
+  return axios.post('/api/movies/', movie)
+  .then((res) => {
+    return res.data
+  })
+  .catch((err) => {
+    console.log('Users Api Err: ', err)
+    return err
+  })
 }
 
 function edit () {
