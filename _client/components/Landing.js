@@ -4,8 +4,9 @@ import { Link } from 'react-router'
 const Landing = React.createClass({
   render () {
     return (
-      <div className='landing'>
+      <div className='landing text-center'>
         <h1>ReactFlix</h1>
+        <p>Hello Hello!</p>
         <Link to='/main'>Login</Link>
       </div>
     )

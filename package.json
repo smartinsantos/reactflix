@@ -21,10 +21,11 @@
     "babel-preset-react": "^6.22.0",
     "bluebird": "^3.4.7",
     "body-parser": "^1.16.0",
+    "bootstrap": "^3.3.7",
     "cookie-parser": "^1.4.3",
     "css-loader": "^0.26.1",
     "dotenv": "^4.0.0",
-    "eslint": "3.6.1",
+    "eslint": "^3.6.1",
     "eslint-config-standard": "6.1.0",
     "eslint-config-standard-jsx": "3.1.0",
     "eslint-config-standard-react": "4.1.0",
@@ -33,6 +34,7 @@
     "eslint-plugin-react": "6.3.0",
     "eslint-plugin-standard": "2.0.0",
     "express": "^4.14.0",
+    "jquery": "^3.1.1",
     "mongoose": "^4.7.9",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
@@ -44,6 +46,7 @@
     "rimraf": "^2.5.4",
     "standard": "^8.6.0",
     "style-loader": "^0.13.1",
+    "toastr": "^2.1.2",
     "underscore": "^1.8.3",
     "webpack": "^2.1.0-beta.25"
   }

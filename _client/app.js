@@ -1,5 +1,8 @@
 // Css dependencies
 import 'normalize.css'
+import 'toastr/build/toastr.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../dist/styles.css'
 
 // React dependencies
 import React from 'react'
