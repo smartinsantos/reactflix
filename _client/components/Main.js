@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 import Movies from '../models/movies.model.js'
 // Components
 import Nav from './Nav'
+import ShowCard from './ShowCard'
 
 const Main = React.createClass({
   getInitialState () {
@@ -25,7 +26,7 @@ const Main = React.createClass({
   },
   render () {
     return (
-      <div className='main'>
+      <div className='search'>
         <Nav
           showSearch
           searchTerm={this.state.searchTerm}
@@ -34,7 +35,16 @@ const Main = React.createClass({
         <div className='text-center'>
           <Link to='/add' className='btn btn-default'>Add Movie</Link>
         </div>
-        <pre><code>{JSON.stringify(this.state.movies)}</code></pre>
+        <div className='row'>
+          {this.state.movies
+            .filter((movie) => {
+              return `${movie.title}`.toLowerCase().indexOf(this.state.searchTerm.toLowerCase()) >= 0
+            })
+            .map((movie, index) => {
+              return <ShowCard movie={movie} key={movie._id} />
+            })
+          }
+        </div>
       </div>
     )
   }

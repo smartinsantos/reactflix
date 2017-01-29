@@ -17,13 +17,13 @@ import AddMovie from './components/AddMovie'
 const App = React.createClass({
   render () {
     return (
-      <Router history={hashHistory}>
-        <div className='app'>
+      <div className='app'>
+        <Router history={hashHistory}>
           <Route path='/' component={Landing} />
           <Route path='/main' component={Main} />
           <Route path='/add' component={AddMovie} />
-        </div>
-      </Router>
+        </Router>
+      </div>
     )
   }
 })
