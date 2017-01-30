@@ -2,7 +2,7 @@
 ## Dependencies
 Tools needed to run this app:
 * `node v6.9.1`, `npm 3.10.8` `mongodb`
-Once you have these, install the following as globals:  
+Once you have these, install the following
 
 ## Installing
 * `git clone`
