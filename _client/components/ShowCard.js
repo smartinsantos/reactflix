@@ -18,11 +18,11 @@ const ShowCard = React.createClass({
   },
   render () {
     return (
-      <Link to={`/details/${this.props.movie._id}`}>
+      <Link to={`/details/${this.props.movie._id}`} className='card-wrapper'>
         <div className='col-sm-4 col-md-3'>
           <div className='thumbnail'>
             <img src={this.props.movie.poster_url} alt='...' />
-            <div className='caption'>
+            <div className='caption card-description-wrapper'>
               <h3>{this.props.movie.title}</h3>
               <div>
                 <ReactStars

@@ -51,3 +51,15 @@ html {
 .hide {
   display: none;
 }
+
+.card-description-wrapper {
+  overflow-y: auto;
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.card-wrapper:hover{
+  text-decoration: none !important;
+}
+
+
