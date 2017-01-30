@@ -3,6 +3,8 @@ import axios from 'axios'
 const MoviesModel = {
   getOne,
   getAll,
+  search,
+  getData,
   create,
   edit,
   remove
@@ -23,6 +25,28 @@ function getAll () {
   return axios.get('/api/movies/')
   .then((res) => {
     return res.data
+  })
+  .catch((err) => {
+    console.log('Users Api Err: ', err)
+    return err
+  })
+}
+
+function search (query) {
+  return axios.get(`/api/movies/search/data?${query}`)
+  .then((res) => {
+    return res.data.data
+  })
+  .catch((err) => {
+    console.log('Users Api Err: ', err)
+    return err
+  })
+}
+
+function getData (query) {
+  return axios.get(`/api/movies/data/find?${query}`)
+  .then((res) => {
+    return res.data.data
   })
   .catch((err) => {
     console.log('Users Api Err: ', err)

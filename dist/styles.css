@@ -58,8 +58,16 @@ html {
   max-height: 200px;
 }
 
-.card-wrapper:hover{
+.card-img {
+  min-height: 311px;
+}
+
+.card-wrapper:hover {
   text-decoration: none !important;
+}
+
+.suggestion :hover {
+  cursor: pointer;
 }
 
 

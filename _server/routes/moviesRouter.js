@@ -1,9 +1,8 @@
 const router = require('express').Router()
 const Movies = require('../db/models/movies')
-
-router.get('/test', (req, res) => {
-  res.status(200).json({ test: 'ok!' })
-})
+const _ = require('underscore')
+const url = require('url')
+const omdb = require('omdb')
 
 // --- GET METHODS
   // GET ONE
@@ -34,6 +33,40 @@ router.get('/', (req, res) => {
     console.log('DB Error', err)
     res.status(500).json({ error: true, message: 'DB Error', data: null })
   })
+})
+
+// GET SUGGESTIONS
+router.get('/search/data', (req, res) => {
+  let query = url.parse(req.url, true).query
+  let goodQuery = _.has(query, 'title')
+  if (goodQuery){
+    omdb.search(query.title, (err, movies) => {
+      if (movies.length > 0) {
+        res.status(200).json({ error: false, data: movies })
+      } else {
+        res.status(200).json({ error: false, data: null })
+      }
+    })
+  } else {
+    res.status(400).json({ error: true, message: 'DB Error', data: null })
+  }
+})
+
+// GET SPECIFIC
+router.get('/data/find', (req, res) => {
+  let query = url.parse(req.url, true).query
+  let goodQuery = _.has(query, 'title') && _.has(query, 'year')
+  if (goodQuery) {
+    omdb.get({ title: query.title, year: query.year }, true, (err, movie) => {
+      if (movie) {
+        res.status(200).json({ error: false, data: movie })
+      } else {
+        res.status(200).json({ error: false, data: null })
+      }
+    })
+  } else {
+    res.status(400).json({ error: true, message: 'DB Error', data: null })
+  }
 })
 
 // --- PUT METHODS
