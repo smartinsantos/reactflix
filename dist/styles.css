@@ -60,6 +60,7 @@ html {
 
 .card-img {
   min-height: 311px;
+  max-height: 311px;
 }
 
 .card-wrapper:hover {
